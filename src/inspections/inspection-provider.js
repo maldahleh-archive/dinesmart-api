@@ -16,7 +16,7 @@ const getTorontoInspections = (callback) => {
 
             const inspections = {};
             result['ROWDATA']['ROW'].forEach(res => {
-                let existingData = inspections[res['ESTABLISHMENT_ID']];
+                let existingData = inspections[res['ESTABLISHMENT_ID'][0]];
                 if (typeof existingData === 'undefined') {
                     existingData = {
                         'id': res['ESTABLISHMENT_ID'][0],
@@ -33,12 +33,13 @@ const getTorontoInspections = (callback) => {
                     };
                 }
 
-                let inspectionData = existingData['inspections'][res['INSPECTION_ID']];
+                let inspectionData = existingData['inspections'][res['INSPECTION_ID'][0]];
                 if (typeof inspectionData === 'undefined') {
                     inspectionData = {
                         'id': res['INSPECTION_ID'][0],
                         'inspectionDate': res['INSPECTION_DATE'][0],
                         'status': res['ESTABLISHMENT_STATUS'][0],
+                        'inspectionType': 'N/A',
                         'infractions': []
                     }
                 }
@@ -49,8 +50,8 @@ const getTorontoInspections = (callback) => {
                     'action': res['ACTION'][0]
                 });
 
-                existingData['inspections'][res['INSPECTION_ID']] = inspectionData;
-                inspections[res['ESTABLISHMENT_ID']] = existingData;
+                existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
+                inspections[res['ESTABLISHMENT_ID'][0]] = existingData;
             });
 
             callback(inspections);
@@ -71,14 +72,58 @@ const getPeelInspections = (callback) => {
                 return;
             }
 
+            const inspections = {};
+            result['ROWDATA']['ROW'].forEach(res => {
+                let existingData = inspections[res['FACILITY_NUMBER'][0]];
+                if (typeof existingData === 'undefined') {
+                    let address = res['STREET_NUMBER'][0] + ' ' + res['STREET_NAME'][0];
 
+                    const direction = res['STREET_DIR'][0];
+                    if (direction !== ' ') {
+                        address = address + " " + direction;
+                    }
+
+                    address = address + ", " + res['CITY'];
+
+                    existingData = {
+                        'id': res['FACILITY_NUMBER'][0],
+                        'name': res['FACILITY_NAME'][0],
+                        'type': res['FACILITY_TYPE'][0],
+                        'address': address,
+                        'minInspections': -1,
+                        'coords': {
+                            'latitude': res['LAT'][0],
+                            'longitude': res['LON'][0]
+                        },
+                        'inspections': {
+                        }
+                    };
+                }
+
+                let inspectionData = existingData['inspections'][res['INSPECTION_ID']];
+                if (typeof inspectionData === 'undefined') {
+                    inspectionData = {
+                        'id': res['INSPECTION_ID'][0],
+                        'inspectionDate': res['INSPECTION_DATE'][0],
+                        'status': res['STATUS'][0],
+                        'inspectionType': res['INSPECTION_TYPE'][0],
+                        'infractions': []
+                    }
+                }
+
+                inspectionData['infractions'].push({
+                    'infractionDetails': res['INFRACTION_TYPE'][0],
+                    'severity': 'N/A',
+                    'action': 'N/A'
+                });
+
+                existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
+                inspections[res['FACILITY_NUMBER'][0]] = existingData;
+            });
+
+            callback(inspections);
         });
     });
 };
 
-export default (callback) => {
-    const inspections = {};
-    getTorontoInspections(callback);
-
-    return inspections;
-};
+export { getPeelInspections, getTorontoInspections };

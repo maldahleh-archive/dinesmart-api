@@ -126,3 +126,4 @@ Sample Response (Updates Daily):
 ### To-Do
 * Create Endpoint that allows for querying by region (Peel, Toronto, etc)
 * Create Endpoint that allows querying by bounds
+* Migrate to promises
