@@ -2,9 +2,11 @@ import express from 'express';
 
 import { getPeelInspections, getTorontoInspections } from './inspections/inspection-provider';
 import cacheMiddleware from './middleware/cache-middleware';
+import extensionMiddleware from './middleware/extend-middleware';
 
 const app = express();
 app.use(cacheMiddleware);
+app.use(extensionMiddleware);
 app.get('/inspections', (req, res) => {
     const inspections = {};
     getPeelInspections(data => {
