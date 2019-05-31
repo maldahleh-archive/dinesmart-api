@@ -1,0 +1,24 @@
+{
+  "name": "dinesafe-api",
+  "version": "1.0.0",
+  "description": "DineSafe JSON API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node -r esm src/app.js",
+    "dev": "nodemon -r esm src/app.js"
+  },
+  "keywords": [],
+  "author": "maldahleh",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.4.13",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "memory-cache": "^0.2.0",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
