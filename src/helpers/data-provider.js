@@ -1,18 +1,32 @@
 import { getPeelInspections, getTorontoInspections } from '../inspections/inspection-provider';
 
 const CACHE_SECONDS = 86400;
+const TOTAL_REGIONS = 2;
+
 let dataDate = new Date();
 
 let inspectionData = [];
 
 const loadData = () => {
-    inspectionData = [];
+    let loadedData = [];
+    let loadedRegions = [];
+
     getPeelInspections(data => {
-        inspectionData = inspectionData.concat(data);
+        loadedData = loadedData.concat(data);
+
+        loadedRegions.push('Peel');
+        if (loadedRegions.length === TOTAL_REGIONS) {
+            inspectionData = loadedData;
+        }
     });
 
     getTorontoInspections(data => {
-        inspectionData = inspectionData.concat(data);
+        loadedData = loadedData.concat(data);
+
+        loadedRegions.push('Toronto');
+        if (loadedRegions.length === TOTAL_REGIONS) {
+            inspectionData = loadedData;
+        }
     });
 };
 
