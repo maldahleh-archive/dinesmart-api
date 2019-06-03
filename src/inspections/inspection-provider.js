@@ -54,7 +54,7 @@ const getTorontoInspections = (callback) => {
                 inspections[res['ESTABLISHMENT_ID'][0]] = existingData;
             });
 
-            callback(inspections);
+            callback(Object.values(inspections));
         });
     });
 };
@@ -121,7 +121,7 @@ const getPeelInspections = (callback) => {
                 inspections[res['FACILITY_NUMBER'][0]] = existingData;
             });
 
-            callback(inspections);
+            callback(Object.values(inspections));
         });
     });
 };
