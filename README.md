@@ -6,8 +6,8 @@ Dinesafe is a JSON API that provides inspection data for places inspected by loc
 
 Sample Response (Updates Daily):
 ```json
-{
-  "1222579": {
+[
+  {
     "id": "1222579",
     "name": "SAI-LILA KHAMAN DHOKLA HOUSE",
     "type": "Food Take Out",
@@ -22,6 +22,7 @@ Sample Response (Updates Daily):
         "id": "104063869",
         "inspectionDate": "2017-10-04",
         "status": "Pass",
+        "inspectionType": "N/A",
         "infractions": [
           {
             "infractionDetails": "",
@@ -34,6 +35,7 @@ Sample Response (Updates Daily):
         "id": "104246429",
         "inspectionDate": "2018-06-20",
         "status": "Pass",
+        "inspectionType": "N/A",
         "infractions": [
           {
             "infractionDetails": "Fail to Hold a Valid Food Handler's Certificate. Muncipal Code Chapter 545-157(17)(b)",
@@ -56,6 +58,7 @@ Sample Response (Updates Daily):
         "id": "104277664",
         "inspectionDate": "2018-08-07",
         "status": "Pass",
+        "inspectionType": "N/A",
         "infractions": [
           {
             "infractionDetails": "Operate food premise - equipment not arranged to permit cleaning - Sec. 9",
@@ -73,6 +76,7 @@ Sample Response (Updates Daily):
         "id": "104462048",
         "inspectionDate": "2019-05-09",
         "status": "Conditional Pass",
+        "inspectionType": "N/A",
         "infractions": [
           {
             "infractionDetails": "FAIL TO ENSURE FACILITY SURFACE CLEANED AS NECESSARY - SEC. 22",
@@ -110,6 +114,7 @@ Sample Response (Updates Daily):
         "id": "104468700",
         "inspectionDate": "2019-05-13",
         "status": "Pass",
+        "inspectionType": "N/A",
         "infractions": [
           {
             "infractionDetails": "",
@@ -120,5 +125,5 @@ Sample Response (Updates Daily):
       }
     }
   }
-}
+]
 ```
