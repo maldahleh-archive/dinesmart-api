@@ -44,11 +44,14 @@ const getTorontoInspections = (callback) => {
                     }
                 }
 
-                inspectionData['infractions'].push({
-                    'infractionDetails': res['INFRACTION_DETAILS'][0],
-                    'severity': res['SEVERITY'][0],
-                    'action': res['ACTION'][0]
-                });
+                const infractionDetails = res['INFRACTION_DETAILS'][0];
+                if (infractionDetails !== '') {
+                    inspectionData['infractions'].push({
+                        'infractionDetails': infractionDetails,
+                        'severity': res['SEVERITY'][0],
+                        'action': res['ACTION'][0]
+                    });
+                }
 
                 existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
                 inspections[res['ESTABLISHMENT_ID'][0]] = existingData;
@@ -111,11 +114,14 @@ const getPeelInspections = (callback) => {
                     }
                 }
 
-                inspectionData['infractions'].push({
-                    'infractionDetails': res['INFRACTION_TYPE'][0],
-                    'severity': 'N/A',
-                    'action': 'N/A'
-                });
+                const infractionDetails = res['INFRACTION_TYPE'][0];
+                if (infractionDetails !== ' ') {
+                    inspectionData['infractions'].push({
+                        'infractionDetails': infractionDetails,
+                        'severity': 'N/A',
+                        'action': 'N/A'
+                    });
+                }
 
                 existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
                 inspections[res['FACILITY_NUMBER'][0]] = existingData;
