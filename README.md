@@ -23,13 +23,7 @@ Sample Response (Updates Daily):
         "inspectionDate": "2017-10-04",
         "status": "Pass",
         "inspectionType": "N/A",
-        "infractions": [
-          {
-            "infractionDetails": "",
-            "severity": "",
-            "action": ""
-          }
-        ]
+        "infractions": []
       },
       "104246429": {
         "id": "104246429",
@@ -115,13 +109,7 @@ Sample Response (Updates Daily):
         "inspectionDate": "2019-05-13",
         "status": "Pass",
         "inspectionType": "N/A",
-        "infractions": [
-          {
-            "infractionDetails": "",
-            "severity": "",
-            "action": ""
-          }
-        ]
+        "infractions": []
       }
     }
   }
