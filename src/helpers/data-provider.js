@@ -9,13 +9,13 @@ let inspectionData = [];
 
 const loadData = () => {
     let loadedData = [];
-    let loadedRegions = [];
+    let loadedRegions = 0;
 
     getPeelInspections(data => {
         loadedData = loadedData.concat(data);
 
-        loadedRegions.push('Peel');
-        if (loadedRegions.length === TOTAL_REGIONS) {
+        loadedRegions++;
+        if (loadedRegions === TOTAL_REGIONS) {
             inspectionData = loadedData;
         }
     });
@@ -23,8 +23,8 @@ const loadData = () => {
     getTorontoInspections(data => {
         loadedData = loadedData.concat(data);
 
-        loadedRegions.push('Toronto');
-        if (loadedRegions.length === TOTAL_REGIONS) {
+        loadedRegions++;
+        if (loadedRegions === TOTAL_REGIONS) {
             inspectionData = loadedData;
         }
     });
