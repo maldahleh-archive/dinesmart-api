@@ -1,5 +1,5 @@
-# Dinesafe API
-Dinesafe is a JSON API that provides inspection data for places inspected by local public health units.
+# Dinesmart API
+Dinesmart is a JSON API that provides inspection data for places inspected by local public health units.
 
 Currently supported cities:
 * Toronto
