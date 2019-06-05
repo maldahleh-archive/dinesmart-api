@@ -1,10 +1,16 @@
 # Dinesafe API
 Dinesafe is a JSON API that provides inspection data for places inspected by local public health units.
 
+Currently supported cities:
+* Toronto
+* Mississauga
+* Brampton
+* Caledon
+
 ### Endpoints
 **/inspections** - Returns a JSON response containing inspections for Toronto and Peel regions.
 
-Sample Response (Updates Daily):
+Sample Response:
 ```json
 [
   {
@@ -17,15 +23,15 @@ Sample Response (Updates Daily):
       "latitude": "43.76797956",
       "longitude": "-79.229029122"
     },
-    "inspections": {
-      "104063869": {
+    "inspections": [
+      {
         "id": "104063869",
         "inspectionDate": "2017-10-04",
         "status": "Pass",
         "inspectionType": "N/A",
         "infractions": []
       },
-      "104246429": {
+      {
         "id": "104246429",
         "inspectionDate": "2018-06-20",
         "status": "Pass",
@@ -48,7 +54,7 @@ Sample Response (Updates Daily):
           }
         ]
       },
-      "104277664": {
+      {
         "id": "104277664",
         "inspectionDate": "2018-08-07",
         "status": "Pass",
@@ -66,7 +72,7 @@ Sample Response (Updates Daily):
           }
         ]
       },
-      "104462048": {
+      {
         "id": "104462048",
         "inspectionDate": "2019-05-09",
         "status": "Conditional Pass",
@@ -104,14 +110,14 @@ Sample Response (Updates Daily):
           }
         ]
       },
-      "104468700": {
+      {
         "id": "104468700",
         "inspectionDate": "2019-05-13",
         "status": "Pass",
         "inspectionType": "N/A",
         "infractions": []
       }
-    }
+    ]
   }
 ]
 ```

@@ -57,6 +57,10 @@ const getTorontoInspections = (callback) => {
                 inspections[res['ESTABLISHMENT_ID'][0]] = existingData;
             });
 
+            Object.keys(inspections).forEach(inspection => {
+                inspections[inspection]['inspections'] = Object.values(inspections[inspection]['inspections']);
+            });
+
             callback(Object.values(inspections));
         });
     });
@@ -125,6 +129,10 @@ const getPeelInspections = (callback) => {
 
                 existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
                 inspections[res['FACILITY_NUMBER'][0]] = existingData;
+            });
+
+            Object.keys(inspections).forEach(inspection => {
+                inspections[inspection]['inspections'] = Object.values(inspections[inspection]['inspections']);
             });
 
             callback(Object.values(inspections));
