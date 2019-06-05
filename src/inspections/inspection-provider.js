@@ -97,7 +97,7 @@ const getPeelInspections = (callback) => {
                         'name': res['FACILITY_NAME'][0],
                         'type': res['FACILITY_TYPE'][0],
                         'address': address,
-                        'minInspections': -1,
+                        'minInspections': 'N/A',
                         'coords': {
                             'latitude': res['LAT'][0],
                             'longitude': res['LON'][0]
