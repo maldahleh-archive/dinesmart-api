@@ -117,7 +117,8 @@ Sample Response:
         "inspectionType": "N/A",
         "infractions": []
       }
-    ]
+    ],
+    "dataSource": "Toronto Public Health"
   }
 ]
 ```
