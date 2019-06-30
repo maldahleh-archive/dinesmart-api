@@ -1,7 +1,7 @@
 # Dinesmart API
 Dinesmart is a JSON API that provides inspection data for places inspected by local public health units.
 
-Currently supported cities:
+Currently supported areas:
 * Toronto
 * Mississauga
 * Brampton
