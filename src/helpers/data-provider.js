@@ -11,23 +11,17 @@ const loadData = () => {
     let loadedData = [];
     let loadedRegions = 0;
 
-    getPeelInspections(data => {
+    const addData = (data) => {
         loadedData = loadedData.concat(data);
 
         loadedRegions++;
         if (loadedRegions === TOTAL_REGIONS) {
             inspectionData = loadedData;
         }
-    });
+    };
 
-    getTorontoInspections(data => {
-        loadedData = loadedData.concat(data);
-
-        loadedRegions++;
-        if (loadedRegions === TOTAL_REGIONS) {
-            inspectionData = loadedData;
-        }
-    });
+    getPeelInspections(data => addData(data));
+    getTorontoInspections(data => addData(data));
 };
 
 const getData = () => {
