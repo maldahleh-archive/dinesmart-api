@@ -8,7 +8,7 @@ Currently supported areas:
 * Caledon
 
 ### Endpoints
-**/inspections** - Returns a JSON response containing inspections for Toronto and Peel regions.
+**/inspections** - Returns a JSON response containing inspection data for the above listed areas.
 
 Sample Response:
 ```json
