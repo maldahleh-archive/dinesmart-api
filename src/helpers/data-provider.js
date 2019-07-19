@@ -1,9 +1,9 @@
 import { getPeelInspections, getTorontoInspections } from '../inspections/inspection-provider';
 
+const INSPECTION_PROVIDERS = [getPeelInspections, getTorontoInspections];
 const CACHE_SECONDS = 86400;
-const TOTAL_REGIONS = 2;
 
-let dataDate = new Date();
+let dataDate;
 
 let inspectionData = [];
 
@@ -15,13 +15,12 @@ const loadData = () => {
         loadedData = loadedData.concat(data);
 
         loadedRegions++;
-        if (loadedRegions === TOTAL_REGIONS) {
+        if (loadedRegions === INSPECTION_PROVIDERS.length) {
             inspectionData = loadedData;
         }
     };
 
-    getPeelInspections(data => addData(data));
-    getTorontoInspections(data => addData(data));
+    INSPECTION_PROVIDERS.forEach(provider => provider(data => addData(data)));
 };
 
 const getData = () => {
