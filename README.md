@@ -23,41 +23,9 @@ Sample Response:
     },
     "inspections": [
       {
-        "date": "2017-10-04",
+        "date": "2019-05-13",
         "status": "Pass",
         "infractions": []
-      },
-      {
-        "date": "2018-06-20",
-        "status": "Pass",
-        "infractions": [
-          {
-            "details": "Fail to Hold a Valid Food Handler's Certificate. Muncipal Code Chapter 545-157(17)(b)",
-            "severity": "NA - Not Applicable"
-          },
-          {
-            "details": "Operator fail to properly wash equipment",
-            "severity": "M - Minor"
-          },
-          {
-            "details": "Operator fail to properly wash surfaces in rooms",
-            "severity": "M - Minor"
-          }
-        ]
-      },
-      {
-        "date": "2018-08-07",
-        "status": "Pass",
-        "infractions": [
-          {
-            "details": "Operate food premise - equipment not arranged to permit cleaning - Sec. 9",
-            "severity": "M - Minor"
-          },
-          {
-            "details": "Use handwashing station other than for handwashing of employees - Sec. 7(4)",
-            "severity": "S - Significant"
-          }
-        ]
       },
       {
         "date": "2019-05-09",
@@ -90,7 +58,39 @@ Sample Response:
         ]
       },
       {
-        "date": "2019-05-13",
+        "date": "2018-08-07",
+        "status": "Pass",
+        "infractions": [
+          {
+            "details": "Operate food premise - equipment not arranged to permit cleaning - Sec. 9",
+            "severity": "M - Minor"
+          },
+          {
+            "details": "Use handwashing station other than for handwashing of employees - Sec. 7(4)",
+            "severity": "S - Significant"
+          }
+        ]
+      },
+      {
+        "date": "2018-06-20",
+        "status": "Pass",
+        "infractions": [
+          {
+            "details": "Fail to Hold a Valid Food Handler's Certificate. Muncipal Code Chapter 545-157(17)(b)",
+            "severity": "NA - Not Applicable"
+          },
+          {
+            "details": "Operator fail to properly wash equipment",
+            "severity": "M - Minor"
+          },
+          {
+            "details": "Operator fail to properly wash surfaces in rooms",
+            "severity": "M - Minor"
+          }
+        ]
+      },
+      {
+        "date": "2017-10-04",
         "status": "Pass",
         "infractions": []
       }

@@ -54,7 +54,11 @@ const getTorontoInspections = (callback) => {
             });
 
             Object.keys(inspections).forEach(inspection => {
-                inspections[inspection]['inspections'] = Object.values(inspections[inspection]['inspections']);
+                let inspectionArray = Object.values(inspections[inspection]['inspections']);
+                inspectionArray.sort((a, b) => (b['date'] > a['date']) ? 1
+                    : ((a['date'] > b['date']) ? -1 : 0));
+
+                inspections[inspection]['inspections'] = inspectionArray;
             });
 
             callback(Object.values(inspections));
@@ -160,7 +164,11 @@ const getPeelInspections = (callback) => {
             });
 
             inspections.forEach(inspection => {
-                inspection['inspections'] = Object.values(inspection['inspections']);
+                let inspectionArray = Object.values(inspection['inspections']);
+                inspectionArray.sort((a, b) => (b['date'] > a['date']) ? 1
+                    : ((a['date'] > b['date']) ? -1 : 0));
+
+                inspection['inspections'] = inspectionArray;
             });
 
             callback(inspections);
