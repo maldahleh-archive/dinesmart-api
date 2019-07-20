@@ -19,28 +19,24 @@ const getTorontoInspections = (callback) => {
                 let existingData = inspections[res['ESTABLISHMENT_ID'][0]];
                 if (typeof existingData === 'undefined') {
                     existingData = {
-                        'id': res['ESTABLISHMENT_ID'][0],
                         'name': res['ESTABLISHMENT_NAME'][0],
                         'type': res['ESTABLISHMENTTYPE'][0],
                         'address': res['ESTABLISHMENT_ADDRESS'][0],
-                        'minInspections': res['MINIMUM_INSPECTIONS_PERYEAR'][0],
                         'coords': {
-                            'latitude': res['LATITUDE'][0],
-                            'longitude': res['LONGITUDE'][0]
+                            'lat': res['LATITUDE'][0],
+                            'lon': res['LONGITUDE'][0]
                         },
                         'inspections': {
                         },
-                        'dataSource': 'Toronto Public Health'
+                        'source': 'Toronto Public Health'
                     };
                 }
 
                 let inspectionData = existingData['inspections'][res['INSPECTION_ID'][0]];
                 if (typeof inspectionData === 'undefined') {
                     inspectionData = {
-                        'id': res['INSPECTION_ID'][0],
-                        'inspectionDate': res['INSPECTION_DATE'][0],
+                        'date': res['INSPECTION_DATE'][0],
                         'status': res['ESTABLISHMENT_STATUS'][0],
-                        'inspectionType': 'N/A',
                         'infractions': []
                     }
                 }
@@ -48,9 +44,8 @@ const getTorontoInspections = (callback) => {
                 const infractionDetails = res['INFRACTION_DETAILS'][0];
                 if (infractionDetails !== '') {
                     inspectionData['infractions'].push({
-                        'infractionDetails': infractionDetails,
-                        'severity': res['SEVERITY'][0],
-                        'action': res['ACTION'][0]
+                        'details': infractionDetails,
+                        'severity': res['SEVERITY'][0]
                     });
                 }
 
@@ -113,18 +108,16 @@ const getPeelInspections = (callback) => {
                 let existingData = result[1];
                 if (typeof existingData === 'undefined') {
                     existingData = {
-                        'id': res['FACILITY_NUMBER'][0],
                         'name': res['FACILITY_NAME'][0],
                         'type': res['FACILITY_TYPE'][0],
                         'address': getAddress(res),
-                        'minInspections': 'N/A',
                         'coords': {
-                            'latitude': res['LAT'][0],
-                            'longitude': res['LON'][0]
+                            'lat': res['LAT'][0],
+                            'lon': res['LON'][0]
                         },
                         'inspections': {
                         },
-                        'dataSource': 'Peel Public Health'
+                        'source': 'Peel Public Health'
                     };
                 } else {
                     inspections = result[0];
@@ -139,10 +132,8 @@ const getPeelInspections = (callback) => {
                 let inspectionData = existingData['inspections'][res['INSPECTION_ID']];
                 if (typeof inspectionData === 'undefined') {
                     inspectionData = {
-                        'id': res['INSPECTION_ID'][0],
-                        'inspectionDate': res['INSPECTION_DATE'][0],
+                        'date': res['INSPECTION_DATE'][0],
                         'status': res['STATUS'][0],
-                        'inspectionType': res['INSPECTION_TYPE'][0],
                         'infractions': []
                     }
                 }
@@ -150,9 +141,8 @@ const getPeelInspections = (callback) => {
                 const infractionDetails = res['INFRACTION_TYPE'][0];
                 if (infractionDetails !== ' ') {
                     inspectionData['infractions'].push({
-                        'infractionDetails': infractionDetails,
-                        'severity': 'N/A',
-                        'action': 'N/A'
+                        'details': infractionDetails,
+                        'severity': 'N/A'
                     });
                 }
 
