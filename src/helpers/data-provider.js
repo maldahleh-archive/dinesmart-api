@@ -8,6 +8,8 @@ let dataDate;
 let inspectionData = [];
 
 const loadData = () => {
+    dataDate = new Date();
+
     let loadedData = [];
     let loadedRegions = 0;
 
@@ -26,7 +28,6 @@ const loadData = () => {
 const getData = () => {
     const currentDate = new Date();
     if ((currentDate - dataDate) / 1000 >= CACHE_SECONDS) {
-        dataDate = currentDate;
         loadData();
     }
 
