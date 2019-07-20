@@ -94,8 +94,7 @@ Sample Response:
         "status": "Pass",
         "infractions": []
       }
-    ],
-    "source": "Toronto Public Health"
+    ]
   }
 ]
 ```

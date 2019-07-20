@@ -27,8 +27,7 @@ const getTorontoInspections = (callback) => {
                             'lon': res['LONGITUDE'][0]
                         },
                         'inspections': {
-                        },
-                        'source': 'Toronto Public Health'
+                        }
                     };
                 }
 
@@ -120,8 +119,7 @@ const getPeelInspections = (callback) => {
                             'lon': res['LON'][0]
                         },
                         'inspections': {
-                        },
-                        'source': 'Peel Public Health'
+                        }
                     };
                 } else {
                     inspections = result[0];
