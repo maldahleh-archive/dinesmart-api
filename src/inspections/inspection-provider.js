@@ -68,6 +68,32 @@ const getTorontoInspections = (callback) => {
 };
 
 const getPeelInspections = (callback) => {
+    const getAddress = (newEntry) => {
+        let address = newEntry['STREET_NUMBER'][0] + ' ' + newEntry['STREET_NAME'][0];
+
+        const direction = newEntry['STREET_DIR'][0];
+        if (direction !== ' ') {
+            address = address + " " + direction;
+        }
+
+        address = address + ", " + newEntry['CITY'][0];
+        return address;
+    };
+
+    const findMatch = (inspectionData, newEntry) => {
+        const address = getAddress(newEntry);
+        for (let i = 0; i < inspectionData.length; i++) {
+            let value = inspectionData[i];
+            if (value['address'] === address
+                && value['name'] === newEntry['FACILITY_NAME'][0]) {
+                    inspectionData.splice(i, 1);
+                    return [inspectionData, value];
+            }
+        }
+
+        return [inspectionData, undefined];
+    };
+
     xmlDownloader('http://opendata.peelregion.ca/media/22752/foodcheckpeel.zip', (text) => {
         if (!text) {
             callback([]);
@@ -80,24 +106,17 @@ const getPeelInspections = (callback) => {
                 return;
             }
 
-            const inspections = {};
+            let inspections = [];
             result['ROWDATA']['ROW'].forEach(res => {
-                let existingData = inspections[res['FACILITY_NUMBER'][0]];
+                let result = findMatch(inspections, res);
+
+                let existingData = result[1];
                 if (typeof existingData === 'undefined') {
-                    let address = res['STREET_NUMBER'][0] + ' ' + res['STREET_NAME'][0];
-
-                    const direction = res['STREET_DIR'][0];
-                    if (direction !== ' ') {
-                        address = address + " " + direction;
-                    }
-
-                    address = address + ", " + res['CITY'];
-
                     existingData = {
                         'id': res['FACILITY_NUMBER'][0],
                         'name': res['FACILITY_NAME'][0],
                         'type': res['FACILITY_TYPE'][0],
-                        'address': address,
+                        'address': getAddress(res),
                         'minInspections': 'N/A',
                         'coords': {
                             'latitude': res['LAT'][0],
@@ -107,6 +126,14 @@ const getPeelInspections = (callback) => {
                         },
                         'dataSource': 'Peel Public Health'
                     };
+                } else {
+                    inspections = result[0];
+                }
+
+                if (res['FACILITY_TYPE'][0] !== 'Healthy Menu Choices Act') {
+                    existingData['type'] = res['FACILITY_TYPE'][0];
+                    existingData['coords']['latitude'] = res['LAT'][0];
+                    existingData['coords']['longitude'] = res['LON'][0];
                 }
 
                 let inspectionData = existingData['inspections'][res['INSPECTION_ID']];
@@ -130,14 +157,14 @@ const getPeelInspections = (callback) => {
                 }
 
                 existingData['inspections'][res['INSPECTION_ID'][0]] = inspectionData;
-                inspections[res['FACILITY_NUMBER'][0]] = existingData;
+                inspections.push(existingData);
             });
 
-            Object.keys(inspections).forEach(inspection => {
-                inspections[inspection]['inspections'] = Object.values(inspections[inspection]['inspections']);
+            inspections.forEach(inspection => {
+                inspection['inspections'] = Object.values(inspection['inspections']);
             });
 
-            callback(Object.values(inspections));
+            callback(inspections);
         });
     });
 };
