@@ -138,11 +138,20 @@ const getPeelInspections = (callback) => {
                     }
                 }
 
-                const infractionDetails = res['INFRACTION_TYPE'][0];
+                let infractionDetails = res['INFRACTION_TYPE'][0];
                 if (infractionDetails !== ' ') {
+                    let severity = 'NA - Not Applicable';
+                    if (infractionDetails.toLowerCase().endsWith('(significant risk)')) {
+                        infractionDetails = infractionDetails.substring(0, infractionDetails.length - 19);
+                        severity = 'S - Significant';
+                    } else if (infractionDetails.toLowerCase().endsWith('(critical risk)')) {
+                        infractionDetails = infractionDetails.substring(0, infractionDetails.length - 16);
+                        severity = 'C - Critical'
+                    }
+
                     inspectionData['infractions'].push({
                         'details': infractionDetails,
-                        'severity': 'N/A'
+                        'severity': severity
                     });
                 }
 
