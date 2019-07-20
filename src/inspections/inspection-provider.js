@@ -125,8 +125,8 @@ const getPeelInspections = (callback) => {
 
                 if (res['FACILITY_TYPE'][0] !== 'Healthy Menu Choices Act') {
                     existingData['type'] = res['FACILITY_TYPE'][0];
-                    existingData['coords']['latitude'] = res['LAT'][0];
-                    existingData['coords']['longitude'] = res['LON'][0];
+                    existingData['coords']['lat'] = res['LAT'][0];
+                    existingData['coords']['lon'] = res['LON'][0];
                 }
 
                 let inspectionData = existingData['inspections'][res['INSPECTION_ID']];
