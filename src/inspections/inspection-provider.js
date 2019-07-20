@@ -19,9 +19,9 @@ const getTorontoInspections = (callback) => {
                 let existingData = inspections[res['ESTABLISHMENT_ID'][0]];
                 if (typeof existingData === 'undefined') {
                     existingData = {
-                        'name': res['ESTABLISHMENT_NAME'][0],
+                        'name': res['ESTABLISHMENT_NAME'][0].trim(),
                         'type': res['ESTABLISHMENTTYPE'][0],
-                        'address': res['ESTABLISHMENT_ADDRESS'][0],
+                        'address': res['ESTABLISHMENT_ADDRESS'][0].trim(),
                         'coords': {
                             'lat': res['LATITUDE'][0],
                             'lon': res['LONGITUDE'][0]

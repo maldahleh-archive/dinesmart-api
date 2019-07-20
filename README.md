@@ -16,7 +16,7 @@ Sample Response:
   {
     "name": "SAI-LILA KHAMAN DHOKLA HOUSE",
     "type": "Food Take Out",
-    "address": "870 MARKHAM RD ",
+    "address": "870 MARKHAM RD",
     "coords": {
       "lat": "43.76797956",
       "lon": "-79.229029122"
