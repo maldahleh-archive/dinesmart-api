@@ -1,14 +1,14 @@
 import { getPeelInspections, getTorontoInspections } from '../inspections/inspection-provider';
 
-const INSPECTION_PROVIDERS = [getPeelInspections, getTorontoInspections];
-const CACHE_SECONDS = 86400;
-
-let dataDate;
-
 let inspectionData = [];
 
+const boot = () => {
+    loadData();
+    setInterval(loadData, 86400000);
+};
+
 const loadData = () => {
-    dataDate = new Date();
+    const INSPECTION_PROVIDERS = [getPeelInspections, getTorontoInspections];
 
     let loadedData = [];
     let loadedRegions = 0;
@@ -26,12 +26,7 @@ const loadData = () => {
 };
 
 const getData = () => {
-    const currentDate = new Date();
-    if ((currentDate - dataDate) / 1000 >= CACHE_SECONDS) {
-        loadData();
-    }
-
     return inspectionData;
 };
 
-export { loadData, getData };
+export { boot, getData };

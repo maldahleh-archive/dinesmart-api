@@ -1,7 +1,7 @@
 import express from 'express';
 import throng from 'throng';
 
-import { loadData, getData } from './helpers/data-provider';
+import { boot, getData } from './helpers/data-provider';
 
 throng({
     workers: process.env.WEB_CONCURRENCY || 1,
@@ -11,5 +11,5 @@ throng({
 
     app
         .get('/inspections', (req, res) => res.json(getData()))
-        .listen(process.env.PORT || 3000, () => loadData());
+        .listen(process.env.PORT || 3000, () => boot());
 });
