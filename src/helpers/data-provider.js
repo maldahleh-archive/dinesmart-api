@@ -4,7 +4,7 @@ let inspectionData = [];
 
 const boot = () => {
     loadData();
-    setInterval(loadData, 86400000);
+    setInterval(loadData, 86400 * 1000);
 };
 
 const loadData = () => {
