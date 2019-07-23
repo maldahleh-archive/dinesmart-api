@@ -1,6 +1,6 @@
 import { getPeelInspections, getTorontoInspections } from '../inspections/inspection-provider';
 
-let inspectionData = [];
+let inspectionData = JSON.stringify([]);
 
 const boot = () => {
     loadData();
@@ -18,15 +18,13 @@ const loadData = () => {
 
         loadedRegions++;
         if (loadedRegions === INSPECTION_PROVIDERS.length) {
-            inspectionData = loadedData;
+            inspectionData = JSON.stringify(loadedData);
         }
     };
 
     INSPECTION_PROVIDERS.forEach(provider => provider(data => addData(data)));
 };
 
-const getData = () => {
-    return inspectionData;
-};
+const getData = () => inspectionData;
 
 export { boot, getData };
