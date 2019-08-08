@@ -33,27 +33,27 @@ Sample Response:
         "infractions": [
           {
             "details": "FAIL TO ENSURE FACILITY SURFACE CLEANED AS NECESSARY - SEC. 22",
-            "severity": "S - Significant"
+            "severity": "Significant"
           },
           {
             "details": "FAIL TO MAINTAIN HANDWASHING STATIONS (LIQUID SOAP AND PAPER TOWELS) - SEC. 7(3)(C)",
-            "severity": "S - Significant"
+            "severity": "Significant"
           },
           {
             "details": "FOOD PREMISE NOT MAINTAINED WITH FOOD HANDLING ROOM IN SANITARY CONDITION - SEC. 7(1)(E)",
-            "severity": "M - Minor"
+            "severity": "Minor"
           },
           {
             "details": "Fail to ensure completion of food handling training by food handler or supervisor - Sec. 32",
-            "severity": "NA - Not Applicable"
+            "severity": "Not Applicable"
           },
           {
             "details": "Fail to protect food from contamination or adulteration - Sec. 26(1)",
-            "severity": "C - Crucial"
+            "severity": "Crucial"
           },
           {
             "details": "Use handwashing station other than for handwashing of employees - Sec. 7(4)",
-            "severity": "S - Significant"
+            "severity": "Significant"
           }
         ]
       },
@@ -63,11 +63,11 @@ Sample Response:
         "infractions": [
           {
             "details": "Operate food premise - equipment not arranged to permit cleaning - Sec. 9",
-            "severity": "M - Minor"
+            "severity": "Minor"
           },
           {
             "details": "Use handwashing station other than for handwashing of employees - Sec. 7(4)",
-            "severity": "S - Significant"
+            "severity": "Significant"
           }
         ]
       },
@@ -77,15 +77,15 @@ Sample Response:
         "infractions": [
           {
             "details": "Fail to Hold a Valid Food Handler's Certificate. Muncipal Code Chapter 545-157(17)(b)",
-            "severity": "NA - Not Applicable"
+            "severity": "Not Applicable"
           },
           {
             "details": "Operator fail to properly wash equipment",
-            "severity": "M - Minor"
+            "severity": "Minor"
           },
           {
             "details": "Operator fail to properly wash surfaces in rooms",
-            "severity": "M - Minor"
+            "severity": "Minor"
           }
         ]
       },

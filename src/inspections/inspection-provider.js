@@ -42,9 +42,16 @@ const getTorontoInspections = (callback) => {
 
                 const infractionDetails = res['INFRACTION_DETAILS'][0];
                 if (infractionDetails !== '') {
+                    let severity = res['SEVERITY'][0];
+                    if (severity.startsWith('NA')) {
+                        severity = severity.substring(5);
+                    } else {
+                        severity = severity.substring(4);
+                    }
+
                     inspectionData['infractions'].push({
                         'details': infractionDetails,
-                        'severity': res['SEVERITY'][0]
+                        'severity': severity
                     });
                 }
 
@@ -142,13 +149,13 @@ const getPeelInspections = (callback) => {
 
                 let infractionDetails = res['INFRACTION_TYPE'][0];
                 if (infractionDetails !== ' ') {
-                    let severity = 'NA - Not Applicable';
+                    let severity = 'Not Applicable';
                     if (infractionDetails.toLowerCase().endsWith('(significant risk)')) {
                         infractionDetails = infractionDetails.substring(0, infractionDetails.length - 19);
-                        severity = 'S - Significant';
+                        severity = 'Significant';
                     } else if (infractionDetails.toLowerCase().endsWith('(critical risk)')) {
                         infractionDetails = infractionDetails.substring(0, infractionDetails.length - 16);
-                        severity = 'C - Critical'
+                        severity = 'Critical'
                     }
 
                     inspectionData['infractions'].push({
